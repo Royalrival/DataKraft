@@ -1,0 +1,8 @@
+streamlit
+torch
+indic-transliteration
+parler-tts
+transformers
+soundfile
+numpy
+pandas
