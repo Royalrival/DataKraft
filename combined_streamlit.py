@@ -8,7 +8,6 @@ import numpy as np
 import os
 import pandas as pd
 
-# Define functions
 def load_models(language):
     """Load the TTS model and tokenizer based on selected language"""
     with st.spinner("⚙️ Loading models... Please wait..."):
@@ -40,7 +39,6 @@ def generate_audio(text, description, model, tokenizer, language):
         generation = model.generate(input_ids=input_ids, prompt_input_ids=prompt_input_ids)
     return generation.cpu().numpy().squeeze()
 
-# Page configuration
 st.set_page_config(
     page_title="Voice Synthesis Studio",
     page_icon="🎙️",
@@ -48,7 +46,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Enhanced CSS styling
 st.markdown("""
     <style>
     /* Main container styling */
@@ -194,7 +191,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Initialize session state
 if 'model' not in st.session_state:
     st.session_state.model = None
 if 'tokenizer' not in st.session_state:
@@ -206,12 +202,10 @@ if 'history' not in st.session_state:
 if 'current_tab' not in st.session_state:
     st.session_state.current_tab = 'Generate'
 
-# Enhanced sidebar with better navigation
 with st.sidebar:
     
     st.title("🎙️ Voice Synthesis Studio")
-    
-    # Model status indicator
+
     st.markdown("### System Status")
     if st.session_state.model is not None:
         st.markdown("""
@@ -225,8 +219,7 @@ with st.sidebar:
         """, unsafe_allow_html=True)
     
     st.markdown("---")
-    
-    # Enhanced navigation
+
     st.markdown("### 📌 Navigation")
     tabs = {
         'Generate': '🎵 Text to Speech',
@@ -238,8 +231,7 @@ with st.sidebar:
             st.session_state.current_tab = tab
     
     st.markdown("---")
-    
-    # Language selection with enhanced UI
+
     st.markdown("### 🌐 Language Settings")
     selected_language = st.radio(
         "",
@@ -250,8 +242,7 @@ with st.sidebar:
     
     if st.button("🔄 Load Selected Model", key="load_model"):
         load_models(selected_language)
-    
-    # Enhanced model information
+
     with st.expander("📚 Model Information"):
         if selected_language == "English":
             st.markdown("""
@@ -271,7 +262,6 @@ with st.sidebar:
                 - 🚀 **Performance:** Optimized for real-time generation
             """)
 
-# Main content area with tab-based navigation
 if st.session_state.current_tab == 'Generate':
     st.title("🎙️ Voice Synthesis Studio")
     
