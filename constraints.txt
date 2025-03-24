@@ -1,0 +1,1 @@
+descript-audiotools @ git+https://github.com/Royalrival/audiotools.git@master

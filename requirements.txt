@@ -1,3 +1,7 @@
+-c constraints.txt
+pip>=25.0.1
+setuptools>=65.0.0
+
 streamlit
 torch
 git+https://github.com/huggingface/parler-tts.git
